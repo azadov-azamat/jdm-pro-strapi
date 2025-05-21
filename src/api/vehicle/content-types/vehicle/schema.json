@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vehicles",
+  "info": {
+    "singularName": "vehicle",
+    "pluralName": "vehicles",
+    "displayName": "vehicle",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "make": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "mileage": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "make"
+    },
+    "stock_number": {
+      "type": "integer"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "status_type": {
+      "type": "enumeration",
+      "enum": [
+        "available",
+        "sold"
+      ]
+    },
+    "vin": {
+      "type": "string"
+    },
+    "transmission": {
+      "type": "string"
+    },
+    "youtube_link": {
+      "type": "string"
+    },
+    "year": {
+      "type": "date"
+    }
+  }
+}
