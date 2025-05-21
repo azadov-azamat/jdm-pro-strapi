@@ -62,6 +62,24 @@
     },
     "year": {
       "type": "date"
+    },
+    "body_style": {
+      "type": "enumeration",
+      "enum": [
+        "coupe",
+        "sedan",
+        "hatchback",
+        "station_wagon"
+      ]
+    },
+    "engine": {
+      "type": "string"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "vehicle"
     }
   }
 }

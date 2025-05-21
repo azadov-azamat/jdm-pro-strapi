@@ -1,0 +1,84 @@
+{
+  "kind": "collectionType",
+  "collectionName": "requests",
+  "info": {
+    "singularName": "request",
+    "pluralName": "requests",
+    "displayName": "request"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "year": {
+      "type": "string"
+    },
+    "make": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "mileage": {
+      "type": "string"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "dollor",
+        "rubl"
+      ]
+    },
+    "color": {
+      "type": "string"
+    },
+    "engine": {
+      "type": "string"
+    },
+    "body_style": {
+      "type": "enumeration",
+      "enum": [
+        "coupe",
+        "sedan",
+        "hatchback",
+        "station_wagon"
+      ]
+    },
+    "transmission": {
+      "type": "enumeration",
+      "enum": [
+        "automatic",
+        "manual"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": false
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "notes": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "find",
+        "sell"
+      ]
+    }
+  }
+}
