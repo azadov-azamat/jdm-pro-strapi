@@ -41,7 +41,7 @@
         "audios"
       ]
     },
-    "status": {
+    "status_type": {
       "type": "enumeration",
       "enum": [
         "available",
