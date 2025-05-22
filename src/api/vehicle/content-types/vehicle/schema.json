@@ -41,12 +41,17 @@
         "audios"
       ]
     },
-    "status_type": {
+    "status": {
       "type": "enumeration",
       "enum": [
         "available",
-        "sold"
+        "sold",
+        "soon"
       ]
+    },
+    "features": {
+      "type": "json",
+      "default": []
     },
     "vin": {
       "type": "string"
@@ -60,6 +65,18 @@
     "year": {
       "type": "date"
     },
+    "registration_expiry": {
+      "type": "date"
+    },
+    "location": {
+      "type": "string"
+    },
+    "reason_for_sale": {
+      "type": "string"
+    },
+    "number_of_owners": {
+      "type": "integer"
+    },
     "body_style": {
       "type": "enumeration",
       "enum": [
@@ -70,7 +87,13 @@
       ]
     },
     "engine": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "gasoline",
+        "diesel",
+        "electric",
+        "hybrid"
+      ]
     },
     "orders": {
       "type": "relation",

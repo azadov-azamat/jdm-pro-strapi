@@ -487,7 +487,7 @@ export interface ApiVehicleVehicle extends Struct.CollectionTypeSchema {
     orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'make'>;
-    status_type: Schema.Attribute.Enumeration<['available', 'sold']>;
+    status: Schema.Attribute.Enumeration<['available', 'sold']>;
     stock_number: Schema.Attribute.Integer;
     transmission: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
