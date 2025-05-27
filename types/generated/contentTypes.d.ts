@@ -481,6 +481,38 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiVehiclePageVehiclePage extends Struct.SingleTypeSchema {
+  collectionName: 'vehicle_pages';
+  info: {
+    displayName: 'vehicle-page';
+    pluralName: 'vehicle-pages';
+    singularName: 'vehicle-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::vehicle-page.vehicle-page'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiVehicleVehicle extends Struct.CollectionTypeSchema {
   collectionName: 'vehicles';
   info: {
@@ -1049,6 +1081,7 @@ declare module '@strapi/strapi' {
       'api::order.order': ApiOrderOrder;
       'api::request.request': ApiRequestRequest;
       'api::service.service': ApiServiceService;
+      'api::vehicle-page.vehicle-page': ApiVehiclePageVehiclePage;
       'api::vehicle.vehicle': ApiVehicleVehicle;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
