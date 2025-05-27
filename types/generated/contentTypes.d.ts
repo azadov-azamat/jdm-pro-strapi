@@ -450,6 +450,37 @@ export interface ApiRequestRequest extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiServiceService extends Struct.CollectionTypeSchema {
+  collectionName: 'services';
+  info: {
+    displayName: 'service';
+    pluralName: 'services';
+    singularName: 'service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks;
+    icon: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service.service'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiVehicleVehicle extends Struct.CollectionTypeSchema {
   collectionName: 'vehicles';
   info: {
@@ -470,7 +501,10 @@ export interface ApiVehicleVehicle extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    engine: Schema.Attribute.String;
+    engine: Schema.Attribute.Enumeration<
+      ['gasoline', 'diesel', 'electric', 'hybrid']
+    >;
+    features: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<[]>;
     images: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -481,13 +515,17 @@ export interface ApiVehicleVehicle extends Struct.CollectionTypeSchema {
       'api::vehicle.vehicle'
     > &
       Schema.Attribute.Private;
+    location: Schema.Attribute.String;
     make: Schema.Attribute.String;
     mileage: Schema.Attribute.String;
     model: Schema.Attribute.String;
+    number_of_owners: Schema.Attribute.Integer;
     orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
     publishedAt: Schema.Attribute.DateTime;
+    reason_for_sale: Schema.Attribute.String;
+    registration_expiry: Schema.Attribute.Date;
     slug: Schema.Attribute.UID<'make'>;
-    status: Schema.Attribute.Enumeration<['available', 'sold']>;
+    status_type: Schema.Attribute.Enumeration<['available', 'sold', 'soon']>;
     stock_number: Schema.Attribute.Integer;
     transmission: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1010,6 +1048,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::order.order': ApiOrderOrder;
       'api::request.request': ApiRequestRequest;
+      'api::service.service': ApiServiceService;
       'api::vehicle.vehicle': ApiVehicleVehicle;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
