@@ -422,7 +422,7 @@ export interface ApiPurchasingProcessPurchasingProcess
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Blocks;
-    instroduction: Schema.Attribute.String;
+    introduction: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

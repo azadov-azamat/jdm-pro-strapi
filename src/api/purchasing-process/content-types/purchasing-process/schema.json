@@ -23,7 +23,7 @@
     "description": {
       "type": "blocks"
     },
-    "instroduction": {
+    "introduction": {
       "type": "string"
     }
   }
