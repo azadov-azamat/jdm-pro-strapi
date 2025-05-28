@@ -405,6 +405,39 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPurchasingProcessPurchasingProcess
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'purchasing_processes';
+  info: {
+    description: '';
+    displayName: 'purchasing-process';
+    pluralName: 'purchasing-processes';
+    singularName: 'purchasing-process';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks;
+    instroduction: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::purchasing-process.purchasing-process'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRequestRequest extends Struct.CollectionTypeSchema {
   collectionName: 'requests';
   info: {
@@ -1079,6 +1112,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::order.order': ApiOrderOrder;
+      'api::purchasing-process.purchasing-process': ApiPurchasingProcessPurchasingProcess;
       'api::request.request': ApiRequestRequest;
       'api::service.service': ApiServiceService;
       'api::vehicle-page.vehicle-page': ApiVehiclePageVehiclePage;

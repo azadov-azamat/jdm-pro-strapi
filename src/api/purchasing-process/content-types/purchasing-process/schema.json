@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "purchasing_processes",
+  "info": {
+    "singularName": "purchasing-process",
+    "pluralName": "purchasing-processes",
+    "displayName": "purchasing-process",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "instroduction": {
+      "type": "string"
+    }
+  }
+}
