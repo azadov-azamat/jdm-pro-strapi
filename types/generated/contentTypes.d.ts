@@ -586,6 +586,7 @@ export interface ApiVehicleVehicle extends Struct.CollectionTypeSchema {
     model: Schema.Attribute.String;
     number_of_owners: Schema.Attribute.Integer;
     orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
+    price: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     reason_for_sale: Schema.Attribute.String;
     registration_expiry: Schema.Attribute.Date;
